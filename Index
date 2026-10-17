@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Flashcards</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #eef2ff;
+  text-align: center;
+  padding: 24px;
+}
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 35px 20px;
+  max-width: 450px;
+  margin: 25px auto;
+  box-shadow: 0 5px 20px #0001;
+}
+button {
+  padding: 12px 20px;
+  margin: 5px;
+  border: 0;
+  border-radius: 10px;
+  background: #4263eb;
+  color: white;
+  font-size: 16px;
+}
+</style>
+</head>
+<body>
+<h1>My Flashcards 📚</h1>
+<p>Grade 12 Study Cards</p>
+<div class="card">
+  <h2 id="question">What is the formula of water?</h2>
+  <h3 id="answer" hidden>H₂O</h3>
+  <button onclick="flip()">Show Answer</button>
+  <button onclick="next()">Next Card</button>
+</div>
+<script>
+const cards = [
+  ["What is the formula of water?", "H₂O"],
+  ["What is baking soda's formula?", "NaHCO₃"],
+  ["What is the formula of carbon dioxide?", "CO₂"]
+];
+let i = 0, showing = false;
+function render() {
+  document.getElementById("question").textContent = cards[i][0];
+  document.getElementById("answer").textContent = cards[i][1];
+  document.getElementById("answer").hidden = !showing;
+}
+function flip() {
+  showing = !showing;
+  render();
+}
+function next() {
+  i = (i + 1) % cards.length;
+  showing = false;
+  render();
+}
+render();
+</script>
+</body>
+</html>
